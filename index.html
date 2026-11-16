@@ -1,0 +1,812 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>A Little Sorry, A Lot of Love ♡</title>
+
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
+
+<style>
+
+:root {
+  --ink: #492b39;
+  --muted: #8d6c79;
+  --rose: #d96f8a;
+  --cream: #fff8f5;
+  --line: #f3dce1;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--cream);
+  color: var(--ink);
+  font-family: 'DM Sans', sans-serif;
+  overflow-x: hidden;
+}
+
+button {
+  font: inherit;
+  cursor: pointer;
+}
+
+/* Floating hearts */
+
+.ambient {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.float-heart {
+  position: absolute;
+  bottom: -50px;
+  color: #e9a1b2;
+  opacity: .4;
+  animation: rise linear infinite;
+}
+
+@keyframes rise {
+  to {
+    transform: translateY(-115vh) rotate(35deg);
+    opacity: 0;
+  }
+}
+
+.wrap {
+  position: relative;
+  z-index: 1;
+}
+
+/* Navigation */
+
+.nav {
+  max-width: 1120px;
+  margin: auto;
+  padding: 24px 28px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.brand {
+  font: 21px 'Playfair Display', serif;
+}
+
+.brand span {
+  color: var(--rose);
+}
+
+.nav a {
+  color: var(--muted);
+  text-decoration: none;
+  font-size: 13px;
+  margin-left: 22px;
+}
+
+/* Hero */
+
+.hero {
+  min-height: 660px;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  padding: 65px 22px 100px;
+}
+
+.eyebrow {
+  display: inline-flex;
+  border: 1px solid var(--line);
+  background: white;
+  padding: 9px 15px;
+  border-radius: 30px;
+  color: var(--rose);
+  font-size: 12px;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+.hero h1 {
+  font: 700 clamp(48px, 8vw, 86px)/1.06 'Playfair Display', serif;
+  margin: 25px 0 18px;
+}
+
+.hero h1 em {
+  color: var(--rose);
+}
+
+.hero p {
+  max-width: 560px;
+  margin: auto;
+  color: var(--muted);
+  font-size: 16px;
+  line-height: 1.8;
+}
+
+.actions {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 30px;
+}
+
+.btn {
+  border: 0;
+  border-radius: 999px;
+  padding: 14px 23px;
+  font-weight: 700;
+  transition: .25s;
+  box-shadow: 0 9px 22px #d96f8a20;
+}
+
+.btn:hover {
+  transform: translateY(-3px);
+}
+
+.primary {
+  background: var(--rose);
+  color: white;
+}
+
+.soft {
+  background: white;
+  color: var(--rose);
+  border: 1px solid var(--line);
+}
+
+/* Teddy */
+
+.bear {
+  font-size: 76px;
+  margin-top: 44px;
+  display: inline-block;
+  animation: bob 2s ease-in-out infinite;
+}
+
+.bear small {
+  display: block;
+  font-size: 12px;
+  color: var(--muted);
+  font-weight: 600;
+}
+
+@keyframes bob {
+  0%,100% {
+    transform: rotate(-4deg) translateY(0);
+  }
+
+  50% {
+    transform: rotate(4deg) translateY(-9px);
+  }
+}
+
+/* Sections */
+
+.section {
+  max-width: 1080px;
+  margin: auto;
+  padding: 74px 25px;
+}
+
+.section-head {
+  text-align: center;
+  margin-bottom: 34px;
+}
+
+.kicker {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: .17em;
+  color: var(--rose);
+  font-weight: 700;
+}
+
+.section h2 {
+  font: 600 clamp(32px, 5vw, 48px) 'Playfair Display', serif;
+  margin: 10px 0;
+}
+
+.sub {
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+/* Love quote cards */
+
+.quote-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 17px;
+}
+
+.quote {
+  background: white;
+  border: 1px solid var(--line);
+  border-radius: 22px;
+  padding: 27px;
+  min-height: 185px;
+  box-shadow: 0 12px 35px #8b4c5b08;
+  transition: .25s;
+}
+
+.quote:hover {
+  transform: translateY(-5px);
+}
+
+.symbol {
+  font-size: 24px;
+}
+
+.quote p {
+  font: italic 19px/1.55 'Playfair Display', serif;
+  margin: 16px 0 10px;
+}
+
+.quote span {
+  color: var(--muted);
+  font-size: 12px;
+}
+
+/* Apology letter */
+
+.note {
+  margin: 42px auto 0;
+  max-width: 760px;
+  background: #fff0f3;
+  border: 1px dashed #e9b2bf;
+  border-radius: 24px;
+  padding: 32px;
+  text-align: center;
+}
+
+.note p {
+  font: italic 20px/1.7 'Playfair Display', serif;
+}
+
+/* Permanent image gallery */
+
+.memory-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+}
+
+.memory {
+  height: 260px;
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  background: white;
+  overflow: hidden;
+  box-shadow: 0 10px 30px #8b4c5b0c;
+}
+
+.memory img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform .5s;
+}
+
+.memory:hover img {
+  transform: scale(1.04);
+}
+
+/* Video */
+
+.video-box {
+  max-width: 760px;
+  margin: auto;
+  border-radius: 26px;
+  border: 1px solid var(--line);
+  background: white;
+  padding: 18px;
+  text-align: center;
+}
+
+.video-box video {
+  width: 100%;
+  max-height: 430px;
+  border-radius: 16px;
+  display: block;
+  background: #f8e9ed;
+}
+
+.video-caption {
+  color: var(--muted);
+  font-size: 13px;
+}
+
+/* Final message */
+
+.promise {
+  background: #fce9ed;
+  padding: 75px 22px;
+  text-align: center;
+}
+
+.promise-inner {
+  max-width: 700px;
+  margin: auto;
+}
+
+.promise h2 {
+  font: 600 clamp(34px, 5vw, 52px) 'Playfair Display', serif;
+}
+
+.promise p {
+  color: var(--muted);
+  line-height: 1.8;
+}
+
+.footer {
+  text-align: center;
+  padding: 30px;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+/* Toast */
+
+.toast {
+  position: fixed;
+  left: 50%;
+  bottom: 25px;
+  transform: translate(-50%, 30px);
+  opacity: 0;
+  background: #492b39;
+  color: white;
+  padding: 13px 20px;
+  border-radius: 30px;
+  z-index: 5;
+  transition: .3s;
+}
+
+.toast.show {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}
+
+/* Popup */
+
+.modal {
+  position: fixed;
+  inset: 0;
+  background: #351b2bbd;
+  display: none;
+  place-items: center;
+  padding: 20px;
+  z-index: 10;
+}
+
+.modal.show {
+  display: grid;
+}
+
+.modal-card {
+  background: #fff8f5;
+  border-radius: 28px;
+  padding: 35px;
+  max-width: 440px;
+  text-align: center;
+  animation: pop .35s ease;
+}
+
+.modal-card h3 {
+  font: 600 32px 'Playfair Display', serif;
+}
+
+.modal-card p {
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+@keyframes pop {
+  from {
+    transform: scale(.8);
+    opacity: 0;
+  }
+
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* Responsive */
+
+@media(max-width:750px) {
+
+  .quote-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .memory-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .hero {
+    min-height: 600px;
+  }
+
+  .section {
+    padding: 58px 20px;
+  }
+
+  .memory {
+    height: 200px;
+  }
+}
+
+@media(max-width:430px) {
+
+  .nav a {
+    display: none;
+  }
+
+  .memory {
+    height: 160px;
+  }
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="ambient" id="ambient"></div>
+
+<div class="wrap">
+
+<header class="nav">
+  <div class="brand">little note <span>♡</span></div>
+
+  <nav>
+    <a href="#words">My words</a>
+    <a href="#memories">Our memories</a>
+    <a href="#video">A tiny movie</a>
+  </nav>
+</header>
+
+<main>
+
+<!-- HERO SECTION -->
+
+<section class="hero">
+
+  <div>
+
+    <div class="eyebrow">
+      ♡ A little message from my heart
+    </div>
+
+    <h1>
+      I'm sorry,<br>
+      <em>my favourite human.</em>
+    </h1>
+
+    <p>
+      I know I may have hurt you, and I never want
+      you to feel that your feelings don't matter.
+      I made this little corner of the internet just
+      to remind you how loved you are.
+    </p>
+
+    <div class="actions">
+
+      <button class="btn primary"
+        onclick="document.querySelector('#words').scrollIntoView({behavior:'smooth'})">
+        Read my little letter ↓
+      </button>
+
+      <button class="btn soft"
+        onclick="showToast('Sending you the biggest virtual hug. 🫂')">
+        Send a hug 🫂
+      </button>
+
+    </div>
+
+    <div class="bear">
+      🧸
+      <small>little bear says: please smile?</small>
+    </div>
+
+  </div>
+
+</section>
+
+<!-- LOVE QUOTES -->
+
+<section class="section" id="words">
+
+  <div class="section-head">
+
+    <div class="kicker">From me, with love</div>
+
+    <h2>A few things I need you to know</h2>
+
+    <p class="sub">
+      No fancy words can replace a sincere apology,
+      but every word here is meant.
+    </p>
+
+  </div>
+
+  <div class="quote-grid">
+
+    <article class="quote">
+      <div class="symbol">🌷</div>
+      <p>"I'm sorry for the moments I made you feel less loved than you deserve."</p>
+      <span>— You deserve softness, always.</span>
+    </article>
+
+    <article class="quote">
+      <div class="symbol">🫶</div>
+      <p>"Your feelings matter to me, even when I don't get things right the first time."</p>
+      <span>— I want to listen better.</span>
+    </article>
+
+    <article class="quote">
+      <div class="symbol">☁️</div>
+      <p>"I don't expect one sorry to fix everything. I'm ready to show you I mean it."</p>
+      <span>— With patience and actions.</span>
+    </article>
+
+    <article class="quote">
+      <div class="symbol">💗</div>
+      <p>"You are not difficult to love. I just need to keep learning how to love you well."</p>
+      <span>— Every single day.</span>
+    </article>
+
+    <article class="quote">
+      <div class="symbol">🌙</div>
+      <p>"Even on the cloudy days, I'm grateful that you're in my life."</p>
+      <span>— My favourite person.</span>
+    </article>
+
+    <article class="quote">
+      <div class="symbol">🦋</div>
+      <p>"I choose understanding over winning, and us over my ego."</p>
+      <span>— Let's talk when you're ready.</span>
+    </article>
+
+  </div>
+
+  <div class="note">
+
+    <div style="font-size:28px">💌</div>
+
+    <p>
+      I'm genuinely sorry. I want to understand what
+      hurt you, not argue about whether you should feel
+      hurt. You don't have to forgive me right away.
+      I'll give you the time and space you need, and
+      I'll do my best to make things right.
+    </p>
+
+    <span style="color:var(--rose);font-weight:700">
+      — Someone who cares about you, a lot ♡
+    </span>
+
+  </div>
+
+</section>
+
+<!-- PERMANENT PHOTO GALLERY -->
+
+<section class="section" id="memories">
+
+  <div class="section-head">
+
+    <div class="kicker">Little moments, big feelings</div>
+
+    <h2>Our favourite memories</h2>
+
+    <p class="sub">
+      A little gallery of our favourite moments,
+      saved right inside this website. ♡
+    </p>
+
+  </div>
+
+  <div class="memory-grid">
+
+    <div class="memory">
+      <img src="image.jpeg" alt="Our memory 1">
+    </div>
+
+    <div class="memory">
+      <img src="image1.jpeg" alt="Our memory 2">
+    </div>
+
+    <div class="memory">
+      <img src="image2.jpeg" alt="Our memory 3">
+    </div>
+
+    <div class="memory">
+      <img src="image3.jpeg" alt="Our memory 4">
+    </div>
+
+    <div class="memory">
+      <img src="image4.jpeg" alt="Our memory 5">
+    </div>
+
+    <div class="memory">
+      <img src="image5.jpeg" alt="Our memory 6">
+    </div>
+
+  </div>
+
+</section>
+
+<!-- PERMANENT VIDEO -->
+
+<section class="section" id="video">
+
+  <div class="section-head">
+
+    <div class="kicker">A little movie for you</div>
+
+    <h2>Our tiny video corner 🎬</h2>
+
+    <p class="sub">
+      A favourite moment, saved here so it is
+      ready whenever you visit.
+    </p>
+
+  </div>
+
+  <div class="video-box">
+
+    <video controls playsinline preload="metadata"
+      poster="/images/video-poster.jpg">
+
+      <source src="video.mp4" type="video/mp4">
+
+      Your browser does not support this video.
+
+    </video>
+
+    <p class="video-caption">
+      A little moment, just for us. ♡
+    </p>
+
+  </div>
+
+</section>
+
+<!-- FINAL APOLOGY -->
+
+<section class="promise">
+
+  <div class="promise-inner">
+
+    <div style="font-size:38px">
+      🌷 🧸 💗
+    </div>
+
+    <h2>Can we start with a hug?</h2>
+
+    <p>
+      I can't promise to be perfect. I can promise
+      to be honest, to listen, to take responsibility,
+      and to keep showing you that your happiness
+      matters to me. Whenever you're ready,
+      I'd love to talk.
+    </p>
+
+    <button class="btn primary"
+      onclick="document.getElementById('modal').classList.add('show')">
+
+      One last little thing ♡
+
+    </button>
+
+  </div>
+
+</section>
+
+</main>
+
+<footer class="footer">
+  Made with a little courage, lots of love,
+  and a sincere sorry. ♡
+</footer>
+
+</div>
+
+<!-- TOAST -->
+
+<div class="toast" id="toast"></div>
+
+<!-- APOLOGY POPUP -->
+
+<div class="modal" id="modal"
+  onclick="if(event.target===this)this.classList.remove('show')">
+
+  <div class="modal-card">
+
+    <div style="font-size:54px">🐻‍❄️💐</div>
+
+    <h3>You're precious to me.</h3>
+
+    <p>
+      Take all the time you need.
+      No pressure, no rush.
+      Just a warm hug waiting whenever you want one. ♡
+    </p>
+
+    <button class="btn primary"
+      onclick="document.getElementById('modal').classList.remove('show');showToast('A thousand tiny hearts for you! 💗')">
+
+      Sending a hug 💗
+
+    </button>
+
+  </div>
+
+</div>
+
+<script>
+
+// Toast message
+
+function showToast(message) {
+
+  const toast = document.getElementById("toast");
+
+  toast.textContent = message;
+
+  toast.classList.add("show");
+
+  setTimeout(() => {
+    toast.classList.remove("show");
+  }, 2600);
+
+}
+
+// Floating hearts animation
+
+const ambient = document.getElementById("ambient");
+
+for (let i = 0; i < 18; i++) {
+
+  const heart = document.createElement("span");
+
+  heart.className = "float-heart";
+
+  heart.textContent = ["♡", "♥", "✿"][i % 3];
+
+  heart.style.left = Math.random() * 100 + "%";
+
+  heart.style.animationDuration =
+    12 + Math.random() * 15 + "s";
+
+  heart.style.animationDelay =
+    -Math.random() * 25 + "s";
+
+  heart.style.fontSize =
+    14 + Math.random() * 22 + "px";
+
+  ambient.appendChild(heart);
+
+}
+
+</script>
+
+</body>
+</html>
